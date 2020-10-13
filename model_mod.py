@@ -1,9 +1,6 @@
 from modules import *
 
 
-
-
-
 class Model():
 
     def __init__(self,is_training,args,reuse=None):

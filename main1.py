@@ -111,18 +111,18 @@ config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 config.gpu_options.per_process_gpu_memory_fraction= 0.9
 config.allow_soft_placement = True
-#args.train_num_steps = train_max_num_problems
+# args.train_num_steps = train_max_num_problems
 args.num_skills = max_skill_num
 sess = tf.Session(config=config)
 
-#sampler = WarpSampler(user_train, usernum, itemnum, batch_size=args.batch_size, maxlen=args.maxlen, n_workers=3)
+# sampler = WarpSampler(user_train, usernum, itemnum, batch_size=args.batch_size, maxlen=args.maxlen, n_workers=3)
 # training model
 with tf.variable_scope("model", reuse=None):
     m = Model(True, args)
     # testing model
 with tf.variable_scope("model", reuse=True):
     mtest = Model(False, args,reuse=True)# testing model
-#mtest = Model(test_students, False, args)
+# mtest = Model(test_students, False, args)
 sess.run(tf.global_variables_initializer())
 weights =[]
 prob_arr=[]
