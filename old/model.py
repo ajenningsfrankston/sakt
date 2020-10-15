@@ -1,7 +1,5 @@
 
-from modules import *
-import os
-import numpy as np
+from old.modules import *
 
 
 class Model():
@@ -95,7 +93,7 @@ class Model():
                         self.enc = feedforward(normalize(self.enc), num_units=[args.hidden_units, args.hidden_units],
                                            dropout_rate=args.dropout_rate, is_training=self.is_training)
                         self.enc *= key_masks
-                        self.seq *=key_masks
+                        self.seq *= key_masks
                         self.enc = normalize(self.enc)
 
         # #self.QK = tf.matmul(self.Q, tf.transpose(self.K, [0, 2, 1]))

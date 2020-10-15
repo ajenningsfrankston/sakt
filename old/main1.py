@@ -1,18 +1,14 @@
-import os
 import time
 import argparse
 import tensorflow as tf
 #from sampler import WarpSampler
-from model import Model
+from old.model import Model
 import numpy as np
-import sys
 import copy
-import random
 import csv
 from math import sqrt
 from sklearn import metrics
 from sklearn.metrics import mean_squared_error
-from sklearn.metrics import r2_score
 
 
 def str2bool(s):
@@ -121,7 +117,7 @@ with tf.variable_scope("model", reuse=None):
     m = Model(True, args)
     # testing model
 with tf.variable_scope("model", reuse=True):
-    mtest = Model(False, args,reuse=True)# testing model
+    mtest = Model(False, args,reuse=True)  # testing model
 # mtest = Model(test_students, False, args)
 sess.run(tf.global_variables_initializer())
 weights =[]

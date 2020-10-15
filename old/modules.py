@@ -86,6 +86,7 @@ def normalize(inputs,
 
     return outputs
 
+
 def embedding(inputs,
               vocab_size,
               num_units,
@@ -151,11 +152,13 @@ def embedding(inputs,
       [ 1.22204471 -0.96587461]]]
     ```
     '''
+
+
     with tf.variable_scope(scope, reuse=reuse):
         lookup_table = tf.get_variable('lookup_table',
                                        dtype=tf.float32,
                                        shape=[vocab_size, num_units],
-                                       #initializer=tf.contrib.layers.xavier_initializer(),
+                                       # initializer=tf.contrib.layers.xavier_initializer(),
                                        regularizer=tf.contrib.layers.l2_regularizer(l2_reg))
         if zero_pad:
             lookup_table = tf.concat((tf.zeros(shape=[1, num_units]),
@@ -179,6 +182,7 @@ def multihead_attention(queries,
                         reuse=None,
                         sizeof_V=100,
                         with_qk=False):
+
     '''Applies multihead attention.
 
     Args:
@@ -196,6 +200,8 @@ def multihead_attention(queries,
     Returns
       A 3d tensor with shape of (N, T_q, C)
     '''
+
+
     with tf.variable_scope(scope, reuse=reuse):
         # Set the fall back option for num_units
         if num_units is None:
@@ -260,6 +266,7 @@ def multihead_attention(queries,
         outputs = normalize(outputs) # (N, T_q, C)
 
     return outputs,QK
+
 
 def feedforward(inputs,
                 num_units=[2048, 512],

@@ -1,4 +1,4 @@
-from modules import *
+from old.modules import *
 
 
 class Model():
@@ -25,7 +25,7 @@ class Model():
         #mask = tf.expand_dims(tf.to_float(tf.not_equal(self.input_seq, 0)), -1)
 
         with tf.variable_scope("encoder"):
-                ## Embedding
+        ## Embedding
                 self.enc, que_emb_table = embedding(self.questions,
                                       vocab_size=num_skills,
                                       num_units=args.hidden_units,
