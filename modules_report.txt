@@ -1,0 +1,57 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 1 files
+Detected 3 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: modules.py
+--------------------------------------------------------------------------------
+modules.py:52:18: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+modules.py:158:23: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+modules.py:166:18: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+================================================================================
+Detailed log follows:
+
+================================================================================
+--------------------------------------------------------------------------------
+Processing file 'modules.py'
+ outputting to 'n_modules.py'
+--------------------------------------------------------------------------------
+
+34:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+47:23: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+52:18: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+52:18: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+77:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+81:25: INFO: Added keywords to args of function 'tf.nn.moments'
+81:25: INFO: Renamed keyword argument for tf.nn.moments from keep_dims to keepdims
+157:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+158:23: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+158:23: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+162:51: INFO: Multiplying scale arg of tf.contrib.layers.l2_regularizer by half to what tf.keras.regularizers.l2 expects.
+
+166:18: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+166:18: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+205:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+211:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+212:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+213:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+221:32: INFO: Added keywords to args of function 'tf.transpose'
+227:28: INFO: Added keywords to args of function 'tf.reduce_sum'
+229:62: INFO: Added keywords to args of function 'tf.shape'
+232:18: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+238:54: INFO: Added keywords to args of function 'tf.shape'
+241:22: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+248:30: INFO: Added keywords to args of function 'tf.reduce_sum'
+250:70: INFO: Added keywords to args of function 'tf.shape'
+254:18: INFO: Renamed 'tf.layers.dropout' to 'tf.compat.v1.layers.dropout'
+254:73: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+289:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+293:18: INFO: Renamed 'tf.layers.conv1d' to 'tf.compat.v1.layers.conv1d'
+294:18: INFO: Renamed 'tf.layers.dropout' to 'tf.compat.v1.layers.dropout'
+294:73: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+298:18: INFO: Renamed 'tf.layers.conv1d' to 'tf.compat.v1.layers.conv1d'
+299:18: INFO: Renamed 'tf.layers.dropout' to 'tf.compat.v1.layers.dropout'
+299:73: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+--------------------------------------------------------------------------------
+

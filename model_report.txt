@@ -1,0 +1,47 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 1 files
+Detected 2 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: model.py
+--------------------------------------------------------------------------------
+model.py:108:20: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+model.py:109:20: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+================================================================================
+Detailed log follows:
+
+================================================================================
+--------------------------------------------------------------------------------
+Processing file 'model.py'
+ outputting to 'n_model.py'
+--------------------------------------------------------------------------------
+
+10:27: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+18:36: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+20:23: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+21:37: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+22:55: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+23:16: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+24:16: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+25:21: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+28:35: INFO: Changed tf.to_float call to tf.cast(..., dtype=tf.float32).
+29:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+47:52: INFO: Added keywords to args of function 'tf.shape'
+47:74: INFO: Added keywords to args of function 'tf.shape'
+70:27: INFO: Renamed 'tf.layers.dropout' to 'tf.compat.v1.layers.dropout'
+72:53: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+78:25: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+103:41: INFO: Added keywords to args of function 'tf.shape'
+108:20: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+108:20: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+109:20: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+109:20: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+117:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+119:8: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+119:8: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+126:29: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+132:22: INFO: tf.summary.merge_all requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+132:22: INFO: Renamed 'tf.summary.merge_all' to 'tf.compat.v1.summary.merge_all'
+--------------------------------------------------------------------------------
+

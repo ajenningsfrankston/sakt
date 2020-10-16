@@ -1,0 +1,26 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 1 files
+Detected 1 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: main1.py
+--------------------------------------------------------------------------------
+main1.py:214:0: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+================================================================================
+Detailed log follows:
+
+================================================================================
+--------------------------------------------------------------------------------
+Processing file 'main1.py'
+ outputting to 'n_main1.py'
+--------------------------------------------------------------------------------
+
+110:9: INFO: Renamed 'tf.ConfigProto' to 'tf.compat.v1.ConfigProto'
+116:7: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+120:5: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+123:5: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+126:9: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+214:0: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+--------------------------------------------------------------------------------
+
