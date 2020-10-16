@@ -32,14 +32,14 @@ def read_data_from_csv_file(fileName_train, fileName_test, max_num_problems):
     index = 0
     i = 0
 
-    n=int(len(rows))
+    n = int(len(rows))
     print(n)
     with open(fileName_test, "r") as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
         for row in reader:
             print(row)
             rows.append(row)
-    index=0
+    index = 0
     while index < len(rows)-1:
         problems_num = int(len(rows[index+1]))
 

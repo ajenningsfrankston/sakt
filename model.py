@@ -24,7 +24,7 @@ class Model():
         x = self._input_data
         key_masks = tf.expand_dims(tf.cast(tf.not_equal(x, 0), dtype=tf.float32), -1)
         with tf.compat.v1.variable_scope("encoder"):
-            ## Embedding
+            #  Embedding
             # key_masks = tf.expand_dims(tf.sign(tf.reduce_sum(tf.abs(x), axis=-1)), -1)
             self.enc, self.lookup = embedding(x,
                                               vocab_size=input_size,
@@ -37,7 +37,7 @@ class Model():
                                               reuse=reuse)
 
             # tf.tile(tf.expand_dims(tf.range(tf.shape(x)[1]), 0), [tf.shape(x)[0], 1])
-            ## Positional Encoding
+            #  Positional Encoding
             # if args.pos:
 
             self.enc += embedding(
@@ -68,7 +68,7 @@ class Model():
                                                    rate=args.dropout_rate,
                                                    training=tf.convert_to_tensor(value=is_training))
 
-            ## Blocks
+            #  Blocks
             for i in range(args.num_blocks):
                 with tf.compat.v1.variable_scope("num_blocks_{}".format(i)):
                     self.enc, self.QK = multihead_attention(queries=normalize(self.seq),
@@ -81,7 +81,7 @@ class Model():
                                                             with_qk=True,
                                                             causality=True)
 
-                    ### Feed Forward
+                    # # Feed Forward
                     # weights = tf.get_default_graph().get_tensor_by_name(os.path.split(V.name)[0] + '/kernel:0')
                     #         #print(weights.shape)
                     #         #self.enc = feedforward(self.enc, num_units=[4*args.hidden_units, num_skills])
