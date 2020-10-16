@@ -82,7 +82,7 @@ def normalize(inputs,
         beta= tf.Variable(tf.zeros(params_shape))
         gamma = tf.Variable(tf.ones(params_shape))
         normalized = (inputs - mean) / ( (variance + epsilon) ** (.5) )
-        outputs = gamma.numpy() * normalized + beta.numpy()
+        outputs = gamma * normalized + beta
 
     return outputs
 
@@ -153,6 +153,7 @@ def embedding(inputs,
     ```
     '''
 
+
     with tf.compat.v1.variable_scope(scope, reuse=reuse):
         lookup_table = tf.compat.v1.get_variable('lookup_table',
                                        dtype=tf.float32,
@@ -199,6 +200,7 @@ def multihead_attention(queries,
     Returns
       A 3d tensor with shape of (N, T_q, C)
     '''
+
 
     with tf.compat.v1.variable_scope(scope, reuse=reuse):
         # Set the fall back option for num_units
