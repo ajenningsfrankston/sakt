@@ -1,8 +1,8 @@
 import time
 import argparse
 import tensorflow as tf
-#from sampler import WarpSampler
-from old.model import Model
+# from sampler import WarpSampler
+from model import Model
 import numpy as np
 import copy
 import csv
@@ -40,10 +40,10 @@ def read_data_from_csv_file(fileName_train, fileName_test, max_num_problems):
             print(row)
             rows.append(row)
     index=0
-    while(index < len(rows)-1):
+    while index < len(rows)-1:
         problems_num = int(len(rows[index+1]))
 
-        if(problems_num <= 2):
+        if problems_num <= 2:
             index += 3
             continue
 
@@ -51,7 +51,7 @@ def read_data_from_csv_file(fileName_train, fileName_test, max_num_problems):
         if(tmp_max_skill > max_skill_num):
             max_skill_num = tmp_max_skill
 
-        if problems_num <max_num_problems:
+        if problems_num < max_num_problems:
             problems = np.zeros(max_num_problems)
             correct = np.zeros(max_num_problems)
             for j in range(problems_num):
@@ -79,6 +79,7 @@ def read_data_from_csv_file(fileName_train, fileName_test, max_num_problems):
     # print "Finish reading data"
 
     return train_rows, test_rows, max_num_problems, max_skill_num+1
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', type=str)
