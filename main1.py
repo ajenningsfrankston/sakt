@@ -54,6 +54,7 @@ def read_data_from_csv_file(fileName_train, fileName_test, max_num_problems):
         if problems_num < max_num_problems:
             problems = np.zeros(max_num_problems)
             correct = np.zeros(max_num_problems)
+            tup = ()
             for j in range(problems_num):
                 problems[max_num_problems-j-1] = problems[max_num_problems-j-1]+int(rows[index+1][problems_num-j-1])
                 correct[max_num_problems-j-1] = correct[max_num_problems-j-1]+int(rows[index+2][problems_num-j-1])
@@ -98,9 +99,9 @@ parser.add_argument('--num_steps', default=50, type=int)
 parser.add_argument('--pos', default=False, type=bool)
 
 args = parser.parse_args()
-model_name = "/home/pande103/2016-EDM-master/DKT"
-args.train_data_path = "./data/"+args.dataset+"/"+args.dataset+"_train.csv"
-args.test_data_path= "./data/"+args.dataset+"/"+args.dataset+"_test.csv"
+model_name = "/models/assist_2009"
+args.train_data_path = "./data/" + args.dataset + "_train.csv"
+args.test_data_path= "./data/" + args.dataset + "_test.csv"
 
 train_students,test_students, max_num_problems, max_skill_num = read_data_from_csv_file(args.train_data_path, args.test_data_path,args.num_steps)
 

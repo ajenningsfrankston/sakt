@@ -1,6 +1,8 @@
 from sklearn.model_selection import train_test_split
 import pandas as pd
 
+# splits the skill builder data into train and test files
+
 import chardet
 with open('data/skill_builder_data.csv', 'rb') as rawdata:
     result = chardet.detect(rawdata.read(100000))
