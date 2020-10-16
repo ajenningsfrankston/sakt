@@ -285,6 +285,11 @@ def feedforward(inputs,
 
     Returns:
       A 3d tensor with the same shape and dtype as inputs
+      :param reuse:
+      :param num_units:
+      :param scope:
+      :param is_training:
+      :param dropout_rate:
     '''
     with tf.compat.v1.variable_scope(scope, reuse=reuse):
         # Inner layer
