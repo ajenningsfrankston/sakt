@@ -37,18 +37,19 @@ def read_data_from_csv_file(fileName_train, fileName_test, max_num_problems):
     with open(fileName_test, "r") as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
         for row in reader:
-            print(row)
+            #print(row)
             rows.append(row)
     index = 0
     while index < len(rows)-1:
         problems_num = int(len(rows[index+1]))
+        print(problems_num)
 
         if problems_num <= 2:
             index += 3
             continue
 
         tmp_max_skill = max(map(int, rows[index+1]))
-        if(tmp_max_skill > max_skill_num):
+        if tmp_max_skill > max_skill_num:
             max_skill_num = tmp_max_skill
 
         if problems_num < max_num_problems:

@@ -1,4 +1,4 @@
-from old.modules import *
+from modules import *
 
 
 class Model():
