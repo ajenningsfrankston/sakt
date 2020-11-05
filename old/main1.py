@@ -2,7 +2,7 @@ import time
 import argparse
 import tensorflow as tf
 #from sampler import WarpSampler
-from old.model import Model
+from model import Model
 import numpy as np
 import copy
 import csv
@@ -80,6 +80,7 @@ def read_data_from_csv_file(fileName_train, fileName_test, max_num_problems):
 
     return train_rows, test_rows, max_num_problems, max_skill_num+1
 
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', type=str)
 parser.add_argument('--train_data_path', default="", type=str)
@@ -97,9 +98,9 @@ parser.add_argument('--num_steps', default=50, type=int)
 parser.add_argument('--pos', default=False, type=bool)
 
 args = parser.parse_args()
-model_name = "/home/pande103/2016-EDM-master/DKT"
-args.train_data_path = "./data/"+args.dataset+"/"+args.dataset+"_train.csv"
-args.test_data_path= "./data/"+args.dataset+"/"+args.dataset+"_test.csv"
+model_name = "/models/sakt1"
+args.train_data_path = "./data/" + args.dataset + "_train.csv"
+args.test_data_path= "./data/" + args.dataset+"_test.csv"
 
 train_students,test_students, max_num_problems, max_skill_num = read_data_from_csv_file(args.train_data_path, args.test_data_path,args.num_steps)
 
@@ -171,19 +172,18 @@ def run_epoch(session, m, students,epoch, eval_op, verbose=False, is_training=Tr
 
         index += args.batch_size
 
-        pred ,_ = session.run([m._pred, eval_op], feed_dict={
+        pred,_ = session.run([m._pred, eval_op], feed_dict={
                 m._input_data: x, m.target_id: target_id,
                 m.target_correctness: target_correctness, m.is_training:is_training, m.problems: problems})
         
-        
         for p in pred:
             pred_labels.append(p)
-    
   
     rmse = sqrt(mean_squared_error(actual_labels, pred_labels))
     fpr, tpr, thresholds = metrics.roc_curve(actual_labels, pred_labels,  pos_label=1)
     auc = metrics.auc(fpr, tpr)
     return rmse, auc
+
 
 num_batch=len(train_students)/args.batch_size
 f_log= open("auc"+"_"+args.dataset+"_"+str(args.hidden_units)+"_"+str(args.num_heads)+"_"+str(args.num_steps)+"_"+str(args.num_blocks)+".csv", 'w+')
